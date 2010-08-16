@@ -73,15 +73,19 @@ The SMTP client library is similar in spirit to Node's `http` module.
 It doesn't provide safety features like address validation, header
 escaping, or body wrapping.  The `Client` class extends `net.Stream`.
 
-To see an example of using the client directly, look at the
-implementation of `MailTransaction.send()` in `mail/index.js`.
-
 ### createClient(port, host, [domain=`hostname -f`, secure=true]) ###
 
 Return a new `Client` object.  The `port` and `host` are required.
 The optional `secure` parameter can be `true`, `false`, or a crypto
 credentials object.  If it is `false`, it won't attempt to use TLS
 even if the server supports it.
+
+    var client = mail.createClient(587, 'smtp.gmail.com');
+    client.setLogin('me@gmail.com', '**password**');
+    client.on('error', function(err) {
+      client.end();
+      throw err;
+    });
 
 #### event: 'ready' ####
 
@@ -125,6 +129,19 @@ authentication parameters.
 The `Client.mail()` method returns a new `ClientTransaction`.  Once
 the `MAIL FROM`,  `RCPT TO`, and `DATA` commands have been sent, the
 transaction emits `'ready'` and data can be written.
+
+    var from = 'sender@example.net',
+        to = 'name@somewhere.org',
+        transaction = client.mail(from, [to]);
+
+    transaction.on('ready', function() {
+      this.write(...)
+          .end();
+    });
+
+    transaction.on('end', function() {
+      client.quit();
+    });
 
 #### event: 'ready' ####
 
