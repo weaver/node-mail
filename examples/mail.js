@@ -1,3 +1,9 @@
+/// mail -- send an email
+//
+// This is the simplest, safest way to send an email.  Headers are
+// escaped and folded, email addresses are validated, and the body is
+// validated and wrapped.
+
 var sys = require('sys'),
     mail = require('../lib/mail').Mail({
       host: 'smtp.gmail.com',
