@@ -166,8 +166,8 @@ Optionally write `data`, then terminate the `DATA` command with a
 
 ## Compatibility ##
 
-Node Mail has been tested against [QMail][1] and [GMail][2].  A
-working subset of these RFCs are supported:
+Node Mail has been tested against [QMail][1] and [GMail][2] using Node
+version `v0.1.103`.  A working subset of these RFCs are supported:
 
   + [Internet Message Format](http://tools.ietf.org/html/rfc5322)
   + [Simple Mail Transfer Protocol](http://tools.ietf.org/html/rfc5321)
