@@ -44,7 +44,7 @@ settings include:
   + `username`: user for server authentication
   + `password`: password for server authentication
 
-### Mail.message(headers) ###
+#### Mail.message(headers) ####
 
 Begin a `MailTransaction`.  The `headers` object may contain any any
 SMTP headers.  When the message is formatted, email addresses are
@@ -55,12 +55,12 @@ An email address may be an array, a single address, or a string with
 command-separated addresses.  Individual addresses may be bare or in
 the format `"Display Name" <name@example.net>`.
 
-### MailTransaction.body(text) ###
+#### MailTransaction.body(text) ####
 
 Add a body to a mail transaction.  Long lines are automatically
 wrapped.
 
-### MailTransaction.send(callback) ###
+#### MailTransaction.send(callback) ####
 
 Connect to the server, transmit the message, and quit.  The callback
 should be in the form `function(err, message) { ... }`.  Upon success,
@@ -73,6 +73,9 @@ The SMTP client library is similar in spirit to Node's `http` module.
 It doesn't provide safety features like address validation, header
 escaping, or body wrapping.  The `Client` class extends `net.Stream`.
 
+To see an example of using the client directly, look at the
+implementation of `MailTransaction.send()` in `mail/index.js`.
+
 ### createClient(port, host, [domain=`hostname -f`, secure=true]) ###
 
 Return a new `Client` object.  The `port` and `host` are required.
@@ -80,39 +83,39 @@ The optional `secure` parameter can be `true`, `false`, or a crypto
 credentials object.  If it is `false`, it won't attempt to use TLS
 even if the server supports it.
 
-### event: 'ready' ###
+#### event: 'ready' ####
 
 This event is emitted once the client has connected and said `EHLO`.
 
-### event: 'reply' ###
+#### event: 'reply' ####
 
 This event is emitted when a reply is received from the server.  The
 handler is passed any number of `Reply` objects, which have `code` and
 `text` properties.
 
-### Client.mail(from, to) ###
+#### Client.mail(from, to) ####
 
 Begin a `ClientTransaction`.  The `from` parameter is the sender's
 email address and `to` is an array of recipients.  Addresses must be
 in a bare format.
 
-### Client.command(name, [args, callback]) ###
+#### Client.command(name, [args, callback]) ####
 
 Send a command to the server.  Optional `args` may be given, which is
 a string representing command arguments.  Passing a `callback` is a
 shortcut for `.withReply(250, callback)`.
 
-### Client.withReply([code, ]callback) ###
+#### Client.withReply([code, ]callback) ####
 
 Listen for the next reply, passing any `Reply` objects along to
 `callback`.  If `code` is given, throw an error if the reply code
 doesn't match.
 
-### Client.quit() ###
+#### Client.quit() ####
 
 Terminate the connection with a `QUIT` command.
 
-### Client.setLogin(username, password) ###
+#### Client.setLogin(username, password) ####
 
 If the server requires `AUTH LOGIN`, enable it by setting the
 authentication parameters.
@@ -131,15 +134,15 @@ Emitted once the envelope is sent and data is can be written.
 
 Emitted once the `DATA` command has been successfully terminated.
 
-### ClientTransaction.write(data) ###
+#### ClientTransaction.write(data) ####
 
 Write data.
 
-### ClientTransaction.puts(data) ###
+#### ClientTransaction.puts(data) ####
 
 Write a line of data (shortcut for `.write(data + '\r\n')`.
 
-### ClientTransaction.end([data]) ###
+#### ClientTransaction.end([data]) ####
 
 Optionally write `data`, then terminate the `DATA` command with a
 `'.\r\n'`.  Upon success, an `'end'` event is emitted.
