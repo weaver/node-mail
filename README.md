@@ -80,11 +80,11 @@ The optional `secure` parameter can be `true`, `false`, or a crypto
 credentials object.  If it is `false`, it won't attempt to use TLS
 even if the server supports it.
 
-### 'ready' ###
+### event: 'ready' ###
 
 This event is emitted once the client has connected and said `EHLO`.
 
-### 'reply' ###
+### event: 'reply' ###
 
 This event is emitted when a reply is received from the server.  The
 handler is passed any number of `Reply` objects, which have `code` and
@@ -122,6 +122,14 @@ authentication parameters.
 The `Client.mail()` method returns a new `ClientTransaction`.  Once
 the `MAIL FROM`,  `RCPT TO`, and `DATA` commands have been sent, the
 transaction emits `'ready'` and data can be written.
+
+#### event: 'ready' ####
+
+Emitted once the envelope is sent and data is can be written.
+
+#### event: 'end' ####
+
+Emitted once the `DATA` command has been successfully terminated.
 
 ### ClientTransaction.write(data) ###
 
