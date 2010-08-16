@@ -5,8 +5,9 @@ Node.JS.  The client currently supports TLS and auth-login.
 
 ## Installation ##
 
-Node Mail has no third-party dependencies.  Download the library and
-add `mail` to a folder in your `NODE_PATH`.
+Node Mail has no third-party dependencies.  To install, you can `npm
+install mail` or download the library and add `mail` to a folder in
+your `NODE_PATH`.
 
 ## Sending Mail ##
 
@@ -166,7 +167,7 @@ Optionally write `data`, then terminate the `DATA` command with a
 
 ## Compatibility ##
 
-Node Mail has been tested against [QMail][1] and [GMail][2] using Node
+Node Mail has been tested against [qmail][1] and [gmail][2] using Node
 version `v0.1.103`.  A working subset of these RFCs are supported:
 
   + [Internet Message Format](http://tools.ietf.org/html/rfc5322)
@@ -181,7 +182,7 @@ There is not currently support for MIME.
 
 ## License ##
 
-Copyright (c) 2010, Ben Weaver <ben@orangesoda.net>
+Copyright (c) 2010, Ben Weaver &lt;ben@orangesoda.net&gt;
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
