@@ -22,7 +22,7 @@ vows.describe('Mail Utilities').addBatch({
   'Header values': {
     topic: function() { return util.escapeHeader('value\r\ncc: name@example.net'); },
 
-    'is escaped': function(topic) {
+    'are escaped': function(topic) {
       assert.equal(topic, 'value cc: name@example.net');
     }
   },
