@@ -1,0 +1,14 @@
+{
+  "name": "mail",
+  "description": "This SMTP client library for Node.JS helps you send email safely and easily.",
+  "version": "0.2.0",
+  "author": "Ben Weaver <ben@orangesoda.net>",
+  "contributors": [],
+  "dependencies": {},
+  "keywords": ["email", "mail", "message", "address", "smtp", "tls", "auth"],
+  "directories": { "lib": "./lib" },
+  "main": "./lib/index",
+  "scripts": {},
+  "bin": {},
+  "engines": { "node": ">= 0.4.0 < 0.5.0" }
+}
