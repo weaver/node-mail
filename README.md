@@ -37,15 +37,19 @@ Use the mailer to send messages:
 
 ## Mail(options) ##
 
-Create a new mailer that can be used to send messages.  Possible
-settings include:
+Create a new mailer that can be used to send messages.  Common options
+include:
 
   + `port`: server listens on this port (default: 587 or 25)
   + `host`: server hostname
-  + `domain`: the domain of the sender (default: `os.hostname()`)
-  + `secure`: `true`, `false`, or crypto credentials (default: false)
   + `username`: user for server authentication
-  + `password`: password for server authentication
+  + `password`: password for server authentication,
+
+Other options:
+
+  + `secure`: `true`, `false`, or crypto credentials (default: `true`)
+  + `domain`: the domain of the sender (default: `os.hostname()`)
+  + `mimeTransport`: `7BIT` or `8BITMIME` (default: `8BITMIME`)
 
 ### Mail.message(headers) ###
 
@@ -77,8 +81,9 @@ version `v0.4.3`.  A working subset of these RFCs are supported:
 
   + [Internet Message Format](http://tools.ietf.org/html/rfc5322)
   + [Simple Mail Transfer Protocol](http://tools.ietf.org/html/rfc5321)
-  + [Authentication Extension](http://www.faqs.org/rfcs/rfc2554.html)
+  + [Authentication Extension](http://tools.ietf.org/html/rfc2554)
   + [SMTP Transport Layer Security](http://tools.ietf.org/html/rfc3207)
+  + [8-bit MIME Transport](http://tools.ietf.org/html/rfc6152)
 
 There is not currently support for MIME.
 
