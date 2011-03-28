@@ -17,30 +17,29 @@ The `Mail` class encapsulates connection settings and can be used as a
 safe, high-level mailer.
 
     var mail = require('mail').Mail({
-          host: 'smtp.gmail.com',
-          username: 'me@gmail.com',
-          password: '**password**'
-        });
+      host: 'smtp.gmail.com',
+      username: 'me@gmail.com',
+      password: '**password**'
+    });
 
 Use the mailer to send messages:
 
     mail.message({
-        from: 'sender@example.net',
-        to: ['recipient@somewhere.org'],
-        subject: 'Hello from Node.JS'
-      })
-      .body('Node speaks SMTP!')
-      .send(function(err) {
-        if (err) throw err;
-        console.log('Sent!');
-      });
+      from: 'sender@example.net',
+      to: ['recipient@somewhere.org'],
+      subject: 'Hello from Node.JS'
+    })
+    .body('Node speaks SMTP!')
+    .send(function(err) {
+      if (err) throw err;
+      console.log('Sent!');
+    });
 
 ## Mail(options) ##
 
 Create a new mailer that can be used to send messages.  Common options
 include:
 
-  + `port`: server listens on this port (default: 587 or 25)
   + `host`: server hostname
   + `username`: user for server authentication
   + `password`: password for server authentication,
@@ -48,6 +47,7 @@ include:
 Other options:
 
   + `secure`: `true`, `false`, or crypto credentials (default: `true`)
+  + `port`: server listens on this port (default: 587 or 25)
   + `domain`: the domain of the sender (default: `os.hostname()`)
   + `mimeTransport`: `7BIT` or `8BITMIME` (default: `8BITMIME`)
 
@@ -85,7 +85,9 @@ version `v0.4.3`.  A working subset of these RFCs are supported:
   + [SMTP Transport Layer Security](http://tools.ietf.org/html/rfc3207)
   + [8-bit MIME Transport](http://tools.ietf.org/html/rfc6152)
 
-There is not currently support for MIME.
+There is not currently direct support for multipart messages or
+attachments, although `node-mail` will send messages in this format if
+they're build manually.
 
 [1]: http://qmail.org/top.html
 [2]: http://mail.google.com/support/bin/answer.py?hl=en&answer=13287
