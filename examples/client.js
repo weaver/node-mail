@@ -6,11 +6,14 @@
 // or a mal-formed body.
 
 var sys = require('sys'),
-    mail = require('../lib/mail');
+    mail = require('../lib');
 
-var client = mail.createClient(587, 'smtp.gmail.com');
+var client = mail.createClient({
+  host: 'smtp.gmail.com',
+  username: 'me@gmail.com',
+  password: '**password**'
+});
 
-client.setLogin('me@gmail.com', '**password**');
 client.on('error', function(err) {
   client.end();
   throw err;

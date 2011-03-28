@@ -5,9 +5,8 @@
 // validated and wrapped.
 
 var sys = require('sys'),
-    mail = require('../lib/mail').Mail({
+    mail = require('../lib').Mail({
       host: 'smtp.gmail.com',
-      port: 587,
       username: 'me@gmail.com',
       password: '**password**'
     });

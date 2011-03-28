@@ -5,7 +5,7 @@
 // safety.
 
 var sys = require('sys'),
-    mail = require('../lib/mail');
+    mail = require('../lib');
 
 var message = new mail.Message({
   from: 'sender@example.net',
@@ -14,8 +14,12 @@ var message = new mail.Message({
 })
 .body('Hello from Node.JS');
 
-var client = mail.createClient(587, 'smtp.gmail.com');
-client.setLogin('me@gmail.com', '**password**');
+var client = mail.createClient({
+  host: 'smtp.gmail.com',
+  username: 'me@gmail.com',
+  password: '**password**'
+});
+
 client.on('error', function(err) {
   client.end();
   throw err;
