@@ -50,6 +50,7 @@ Other options:
   + `port`: server listens on this port (default: 587 or 25)
   + `domain`: the domain of the sender (default: `os.hostname()`)
   + `mimeTransport`: `7BIT` or `8BITMIME` (default: `8BITMIME`)
+  + `timeout`: timeout for server connection (default: no timeout)
 
 ### Mail.message(headers) ###
 
