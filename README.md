@@ -48,7 +48,7 @@ Other options:
 
   + `secure`: `true`, `false`, or crypto credentials (default: `true`)
   + `port`: server listens on this port (default: 587 or 25)
-  + `domain`: the domain of the sender (default: `os.hostname()`)
+  + `domainName`: the domain of the sender (default: `os.hostname()`)
   + `mimeTransport`: `7BIT` or `8BITMIME` (default: `8BITMIME`)
 
 ### Mail.message(headers) ###

@@ -6,7 +6,7 @@ The SMTP client library is similar in spirit to Node's `http` module.
 It doesn't provide safety features like address validation, header
 escaping, or body wrapping.  The `Client` class extends `net.Stream`.
 
-### createClient(port, host, [domain=`hostname -f`, secure=true]) ###
+### createClient(port, host, [domainName=`hostname -f`, secure=true]) ###
 
 Return a new `Client` object.  The `port` and `host` are required.
 The optional `secure` parameter can be `true`, `false`, or a crypto
